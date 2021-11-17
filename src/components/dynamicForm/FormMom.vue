@@ -4,7 +4,16 @@
   <div class="FormMom">
   我是老母
 
-  <div v-for="item in pageData" :key="item.id">
+  <component v-for="item in pageData"
+    :key="item.id"
+    :is="item.type"
+    :onedata="item"
+    :nowpage="nowpage"
+    >
+  </component>
+
+<!-- 以下為另一種方法 -->
+  <!--<div v-for="item in pageData" :key="item.id">
 
     <template v-if="item.type ==='textPart' ">
       <textPart :onedata="item" :nowpage="nowpage"></textPart>
@@ -12,22 +21,9 @@
 
     <template v-if="item.type ==='textPart2' ">
       <textPart2 :onedata="item" :nowpage="nowpage"></textPart2>
-    </template>
+    </template> 
 
-  </div>
-  <!--<components is="textPart"></components>-->
-
-   <!--<component v-for="item in pageData"
-    :key="item.id"
-    :is="item.type"
-    :onedata="item"
-    >
-   </component>
--->
-
-<!--<textPart></textPart>-->
-
-
+  </div>-->
 
 ---------------------------------------------------
   </div>
