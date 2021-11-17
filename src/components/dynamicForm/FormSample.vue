@@ -3,7 +3,7 @@
   <h1>你爺爺</h1>
     <div v-for="(item,index) in myTest" :key="index">
     分頁 :  {{index}}
-      <FormMom :onepage="item" :key="item.id"> </FormMom>
+      <FormMom :onepage="item" :key="item.id" :nowpage="index"> </FormMom>
     </div>
   </div>
 </template>

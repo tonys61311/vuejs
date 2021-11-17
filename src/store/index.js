@@ -10,6 +10,6 @@ export default createStore({
   actions: {
   },
   modules: {
-    dynamicFormModule: dynamicFormModule , // 動態表單
+     dynamicFormModule , // 動態表單
   }
 })

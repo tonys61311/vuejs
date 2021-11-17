@@ -1,11 +1,10 @@
 <template>
   <div class="textPart">
 
-    <!--{{oneData.title}}
+    <p>{{oneData.title}}</p>
     <input type="text" v-model="onlyVal"  >
-    <div class="red" :class="{ show: !oneData.isErr }">{{oneData.errMsg}}</div> -->
+    <div class="red" :class="{ show: !oneData.isErr }">{{oneData.errMsg}}</div>
 
-    我柿仔園見!!!
     
 
   </div>
@@ -14,27 +13,33 @@
 <script>
 export default {
   name: 'textPart',
-  // props: ['onedata'] ,
+  props: ['onedata','nowpage'] ,
   data () {
     return {
-      // oneData:this._props.onedata,
-      // onlyVal:this.onedata.val
+      oneData:this.onedata,
+      onlyVal:this.onedata.val
     }
   },
   methods: {
 
   },
   created() {
-    console.log('子元件 - 黑')
+    // console.log('子元件 - 黑')
     // console.log(this._props.onedata)
-    // console.log(this.onedata.val)
+    // console.log(this.onedata)
   },
   watch:{
     onlyVal:function(){
       // var vm = this ;
       // this.oneData.val = this.onlyVal ;
       // 改值需到store內改
-    //   this.$store.dispatch('changeVal' , this.oneData )
+      this.oneData.val = this.onlyVal ;
+      var test = {
+        'page':this.nowpage ,
+        'data':this.oneData
+      }
+
+      this.$store.dispatch("dynamicFormModule/changeVal" ,  test  )
 
       
     }

@@ -3,7 +3,19 @@
 <template>
   <div class="FormMom">
   我是老母
-  <components :is="textPart"></components>
+
+  <div v-for="item in pageData" :key="item.id">
+
+    <template v-if="item.type ==='textPart' ">
+      <textPart :onedata="item" :nowpage="nowpage"></textPart>
+    </template>
+
+    <template v-if="item.type ==='textPart2' ">
+      <textPart2 :onedata="item" :nowpage="nowpage"></textPart2>
+    </template>
+
+  </div>
+  <!--<components is="textPart"></components>-->
 
    <!--<component v-for="item in pageData"
     :key="item.id"
@@ -28,12 +40,12 @@ import * as itemElements from './element/itemTest'
 
 export default {
   name: 'FormMom',
-  components: itemElements,
+  components:itemElements ,
   // components:{
   //   textPart,
 
   // },
-  props: ['onepage'],
+  props: ['onepage','nowpage'],
   data () {
     return {
         pageData:this.onepage,
