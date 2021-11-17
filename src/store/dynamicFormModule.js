@@ -75,20 +75,21 @@ export default ({
             // console.log(this.state.dynamicFormModule.pageFieldState[nowPage][fieldName])
 
             
-            nowData.rule.forEach(element => {
-                this.state.dynamicFormModule.pageFieldState[nowPage][fieldName]['isErr'] = false ; // 先把錯誤取消
+            nowData.rule.forEach((element,index) => {
+                if(index == 0){
+                    this.state.dynamicFormModule.pageFieldState[nowPage][fieldName]['isErr'] = false ; // 先把錯誤取消
+                }
+
 
                 switch (element) {
                     case 'A01': // 規則1 必填
                     
                       if(pageFieldState[nowPage][fieldName]['display'] == true && pageFieldState[nowPage][fieldName]['val'] ==''){
-                        console.log('前')
-                        console.log(pageFieldState[nowPage][fieldName]['isErr'])
                         pageFieldState[nowPage][fieldName]['isErr'] = true
-                        console.log('後')
-                        console.log(pageFieldState[nowPage][fieldName]['isErr'])
                         pageFieldState[nowPage][fieldName]['errMsg'] = '此欄位為必填'
                       }
+
+                     
                       
                       break;
                     case 'A02': // 規則2 不可大於10個字
@@ -97,14 +98,16 @@ export default ({
                         pageFieldState[nowPage][fieldName]['isErr'] = true
                         pageFieldState[nowPage][fieldName]['errMsg'] = '字數不可超過10'
                       }
+
+                     
         
                       break;
                     default:
                   }
                 
+                  return false;
             });
-            console.log('送出前')
-            console.log(pageFieldState)
+
             return pageFieldState ;
   
         }
