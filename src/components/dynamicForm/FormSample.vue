@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
+import { reactive , computed } from 'vue'
 import FormMom from './FormMom'
 
 export default {
@@ -16,16 +18,21 @@ export default {
   components: {
       FormMom
   },
-  data () {
-    return {
+  setup(){ // render前就會執行
+    const store = useStore()
+    const myTest=reactive(store.state.dynamicFormModule.pageFieldState)
+
+    return{
+      myTest ,
     }
   },
-  computed:{
-      myTest(){
-          return this.$store.state.dynamicFormModule.pageFieldState ;
-      },
+  // 以下為選項式API寫法
+  // computed:{
+  //     myTest(){
+  //         return this.$store.state.dynamicFormModule.pageFieldState ;
+  //     },
 
-  }
+  // }
 }
 </script>
 

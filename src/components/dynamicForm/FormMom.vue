@@ -4,6 +4,7 @@
   <div class="FormMom">
   我是老母
 
+
   <component v-for="item in pageData"
     :key="item.id"
     :is="item.type"
@@ -32,30 +33,30 @@
 <script>
 // import textPart from './element/textPart'
 // import textPart2 from './element/textPart2'
+import { reactive } from 'vue'
 import * as itemElements from './element/itemTest'
 
 export default {
   name: 'FormMom',
   components:itemElements ,
-  // components:{
-  //   textPart,
-
-  // },
   props: ['onepage','nowpage'],
-  data () {
+
+  // 原用法為選項式API
+  // setUp 為組合式API
+  //引入 setUp 的方法 則不須 methods , watch , computed ,data 因為所有的東西都會被一起包在 setup 裡引用出來
+  setup(props,context){
+    // console.log(props.onepage)
+    // console.log(props.nowpage)
+
+    const pageData=reactive(props.onepage)
+
+
     return {
-        pageData:this.onepage,
+      pageData,
+
     }
-  },
-  computed:{
 
-
-  },
-  created() {
-    // console.log('母元件')
-    // console.log(this.onepage)
-    // console.log(textPart)
-      
+    
   },
 }
 </script>
