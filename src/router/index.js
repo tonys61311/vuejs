@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import FormSample from '../components/dynamicForm/FormSample.vue'
+import DashBoard from '../components/DashBoard.vue'
 
 const routes = [
   // {
@@ -16,8 +17,16 @@ const routes = [
   },
   {
     path: '/',
-    name: '測試用',
-    component: FormSample
+    name: '模板',
+    component: DashBoard,
+    children:[
+      { 
+        path:'dynamicform',
+        name: '動態表單',
+        component: FormSample
+      },
+
+    ],
   },
   {
     path: '/about',
