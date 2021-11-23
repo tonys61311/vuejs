@@ -13,5 +13,3 @@ export { default as SelectItem } from './SelectItem.vue'
 // switch按鈕
 export { default as SwitchItem } from './SwitchItem.vue' 
 
-// 單選框
-export { default as RadioItem } from './RadioItem.vue' 
