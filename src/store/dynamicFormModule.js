@@ -38,6 +38,58 @@ export default ({
                     'display':true ,
                 },
             },
+            '測試用':{
+                    'text1':{
+                      'title': '單行輸入框',
+                      'type':'TextItem',
+                      'val': '',
+                      'id':'text1',
+                      'isErr':false,
+                      'errMsg':'此欄位為必填',
+                      'rule':['A01'],
+                      'display':true ,
+                      'disable':false
+                  },
+                    'select':{
+                      'title': '下拉選單',
+                      'type':'SelectItem',
+                      'val': '',
+                      'id':'select',
+                      'isErr':false,
+                      'errMsg':'此欄位為必填',
+                      'rule':['A01'],
+                      'display':true ,
+                      'options': [{
+                        value: '选项1',
+                        label: '黄金糕'
+                      }, {
+                        value: '选项2',
+                        label: '双皮奶'
+                      }, {
+                        value: '选项3',
+                        label: '蚵仔煎'
+                      }, {
+                        value: '选项4',
+                        label: '龙须面'
+                      }, {
+                        value: '选项5',
+                        label: '北京烤鸭'
+                      }],
+                  },
+                    'switch':{
+                      'title': 'Switch開關',
+                      'type':'SwitchItem',
+                      'val': true,
+                      'id':'switch',
+                      'isErr':false,
+                      'errMsg':'此欄位為必填',
+                      'rule':['A01'],
+                      'display':true ,
+                      'disable':false
+                  },
+                  
+
+            }
         }
     },
     mutations: {
