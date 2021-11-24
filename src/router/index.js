@@ -24,7 +24,8 @@ const routes = [
       { 
         path:'dynamicform',
         name: '動態表單',
-        component: FormSample
+        component: FormSample,
+        meta: { requiresAuth: true }, // 登入控管
       },
 
     ],

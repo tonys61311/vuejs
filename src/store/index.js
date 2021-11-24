@@ -10,6 +10,10 @@ export default createStore({
   mutations: {
     LOADSTATE(state , payload){
       state.isLoading = payload
+
+    },
+    LOGINSTATE(state , status){
+      state.isLogin = status 
     }
   },
   actions: {

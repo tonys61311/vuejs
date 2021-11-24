@@ -1,6 +1,7 @@
 <template>
   <div class="FormSample">
   <h1>你爺爺</h1>
+    <div class="red"> 加入登入控管 (參考main.js的 控管登入) </div>
     <div v-for="(item,index) in myTest" :key="index">
     分頁 :  {{index}}
       <FormMom :onepage="item" :key="item.id" :nowpage="index"> </FormMom>
@@ -51,5 +52,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.red {
+  color: red ;
 }
 </style>
