@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import FormSample from '../components/dynamicForm/FormSample.vue'
 import DashBoard from '../components/DashBoard.vue'
+import Login from '../components/Login.vue'
 
 const routes = [
   // {
@@ -27,6 +28,11 @@ const routes = [
       },
 
     ],
+  },
+  {
+    path: '/login',
+    name: '登入測試',
+    component: Login
   },
   {
     path: '/about',
