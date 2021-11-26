@@ -25,6 +25,9 @@ export default {
   },
   setup () {
 
+    //取得環境變數方法
+    console.log('取得環境變數' )
+    console.log(process.env)
     // 共用方法 sample 
     var ttt = Date_ADtoChina('2021-11-22');
     console.log(ttt)

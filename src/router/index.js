@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import FormSample from '../components/dynamicForm/FormSample.vue'
-import DashBoard from '../components/DashBoard.vue'
-import Login from '../components/Login.vue'
+import Home from '@/views/Home.vue'
+import About from '@/views/About.vue'
+import FormSample from '@/components/dynamicForm/FormSample.vue'
+import DashBoard from '@/components/DashBoard.vue'
+import Login from '@/components/Login.vue'
 
 const routes = [
   // {
@@ -39,6 +39,7 @@ const routes = [
     path: '/about',
     name: 'About',
     component:About,
+    meta: { requiresAuth: true }, // 登入控管
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
