@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
-import axios from 'axios';
+import axios from '@/util/axiosUtil' // 請求API(+攔截器)
 import VueAxios from 'vue-axios';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"

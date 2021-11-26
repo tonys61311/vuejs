@@ -11,7 +11,7 @@
 <script>
 import Navbar from './part/Navbar.vue'
 import {testMethod} from '../shareMethod/methods.js'
-import axios from 'axios';
+import axios from '@/util/axiosUtil' // 請求API(+攔截器)
 import { onMounted } from 'vue'
 
 const { Date_ADtoChina } = testMethod()
