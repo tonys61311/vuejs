@@ -11,6 +11,9 @@
 <script>
 import Navbar from './part/Navbar.vue'
 import {testMethod} from '../shareMethod/methods.js'
+import axios from 'axios';
+import { onMounted } from 'vue'
+
 const { Date_ADtoChina } = testMethod()
 
 
@@ -26,11 +29,25 @@ export default {
   setup () {
 
     //取得環境變數方法
-    console.log('取得環境變數' )
+    console.log('----取得環境變數----' )
     console.log(process.env)
     // 共用方法 sample 
+    console.log('----共用方法 sample ----' )
     var ttt = Date_ADtoChina('2021-11-22');
     console.log(ttt)
+
+    // 跨域請求參考 https://www.796t.com/article.php?id=164189
+    console.log('----跨域請求測試----')
+    onMounted(() => {
+      axios
+      .get('api/try/ajax/json_demo.json')
+      .then(response => {
+        console.log(response)
+      })
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
+    })
 
 
 

@@ -25,7 +25,7 @@ module.exports= {
         // 你需要在开发环境下将 API 请求代理到 API 服务器。-->
         proxy:{
             '/api': {
-                target: 'http:www.baidu.com', // 要代理的API地址
+                target: 'https://www.runoob.com/', // 要代理的API地址
                 changeOrigin: true, // 允许跨域
                 // <!--这里理解成用'/api'代替target里面的地址，后面组件中我们掉接口时直接用api代替--> 
                 // <!--比如我要调用'http://www.abc.com/user/add'，直接写'/api/user/add'即可'-->
