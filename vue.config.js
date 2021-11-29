@@ -25,7 +25,7 @@ module.exports= {
         // 你需要在开发环境下将 API 请求代理到 API 服务器。-->
         proxy:{
             '/api': {
-                target: 'https://www.runoob.com/', // 要代理的API地址
+                target: process.env.VUE_APP_BASE_API, // 要代理的API地址
                 changeOrigin: true, // 允许跨域
                 // <!--这里理解成用'/api'代替target里面的地址，后面组件中我们掉接口时直接用api代替--> 
                 // <!--比如我要调用'http://www.abc.com/user/add'，直接写'/api/user/add'即可'-->
@@ -58,3 +58,5 @@ module.exports= {
 //     }
 //   }
 // configureWebpack 配置另外參考 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
+// 多個跨域請求配置如下:
+// https://www.cxyzjd.com/article/weixin_47953779/108024941

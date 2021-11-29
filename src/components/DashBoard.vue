@@ -13,6 +13,7 @@ import Navbar from './part/Navbar.vue'
 import {testMethod} from '../shareMethod/methods.js'
 import axios from '@/util/axiosUtil' // 請求API(+攔截器)
 import { onMounted } from 'vue'
+import store from '@/store/index.js'
 
 const { Date_ADtoChina } = testMethod()
 
@@ -38,14 +39,17 @@ export default {
 
     // 跨域請求參考 https://www.796t.com/article.php?id=164189
     console.log('----跨域請求測試----')
-    onMounted(() => {
+    store.commit('LOADSTATE',true) // loading 遮罩
+    onMounted(() => { // correctAPI api/try/ajax/json_demo.json
       axios
       .get('api/try/ajax/json_demo.json')
       .then(response => {
-        console.log(response)
+        console.log(response.data)
+        store.commit('LOADSTATE',false) // loading 遮罩
       })
       .catch(function (error) { // 请求失败处理
         console.log(error);
+        store.commit('LOADSTATE',false) // loading 遮罩
       });
     })
 
