@@ -13,6 +13,11 @@
                 </router-link>
             </li>
             <li class="nav-item">
+                <router-link to='/othertest' class="nav-link" >
+                    其他測試
+                </router-link>
+            </li>
+            <li class="nav-item">
                 <router-link to='/login' class="nav-link" >
                     登入頁面TEST
                 </router-link>

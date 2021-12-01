@@ -4,6 +4,7 @@ import About from '@/views/About.vue'
 import FormSample from '@/components/dynamicForm/FormSample.vue'
 import DashBoard from '@/components/DashBoard.vue'
 import Login from '@/components/Login.vue'
+import OtherTest from '@/components/OtherTest.vue'
 
 const routes = [
   // {
@@ -26,6 +27,11 @@ const routes = [
         name: '動態表單',
         component: FormSample,
         meta: { requiresAuth: true }, // 登入控管
+      },
+      { 
+        path:'othertest',
+        name: '其他測試',
+        component: OtherTest,
       },
 
     ],

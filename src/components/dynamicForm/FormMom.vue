@@ -13,19 +13,6 @@
     >
   </component>
 
-<!-- 以下為另一種方法 -->
-  <!--<div v-for="item in pageData" :key="item.id">
-
-    <template v-if="item.type ==='textPart' ">
-      <textPart :onedata="item" :nowpage="nowpage"></textPart>
-    </template>
-
-    <template v-if="item.type ==='textPart2' ">
-      <textPart2 :onedata="item" :nowpage="nowpage"></textPart2>
-    </template> 
-
-  </div>-->
-
 ---------------------------------------------------
   </div>
 </template>
@@ -45,8 +32,6 @@ export default {
   // setUp 為組合式API
   //引入 setUp 的方法 則不須 methods , watch , computed ,data 因為所有的東西都會被一起包在 setup 裡引用出來
   setup(props,context){
-    // console.log(props.onepage)
-    // console.log(props.nowpage)
 
     const pageData=reactive(props.onepage)
 

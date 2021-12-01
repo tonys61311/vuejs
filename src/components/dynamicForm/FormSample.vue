@@ -27,13 +27,6 @@ export default {
       myTest ,
     }
   },
-  // 以下為選項式API寫法
-  // computed:{
-  //     myTest(){
-  //         return this.$store.state.dynamicFormModule.pageFieldState ;
-  //     },
-
-  // }
 }
 </script>
 
