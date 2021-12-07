@@ -2,7 +2,7 @@
   <div class="textPart2 pink">
 
     <p class="pink">{{onedata.title}}</p>
-    <input type="text" v-model="onlyVal"  >
+    <input type="text" v-model="onlyVal" :disabled="!oneData.disable" >
     <div class="red" :class="{ show: !onedata.isErr }">{{onedata.errMsg}}</div>
 
     

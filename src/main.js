@@ -5,8 +5,6 @@ import store from './store'
 import installElementPlus from './plugins/element'
 import axios from '@/util/axiosUtil' // 請求API(+攔截器)
 import VueAxios from 'vue-axios';
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
 
 const app = createApp(App)
 app.use(VueAxios, axios);

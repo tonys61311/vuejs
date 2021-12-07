@@ -1,33 +1,79 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <router-link to='/dynamicform' class="nav-link" >
-                    動態表單
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to='/othertest' class="nav-link" >
-                    其他測試
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to='/login' class="nav-link" >
-                    登入頁面TEST
-                </router-link>
-            </li>
+<!--白-->
 
-        </ul>
-
-        </div>
-    </div>
-    </nav>
+  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu-item index="1">
+        <router-link to='/dynamicform' class="nav-link link" >
+          動態表單
+        </router-link>
+    </el-menu-item>
+    <el-menu-item index="2">
+        <router-link to='/othertest' class="nav-link link" >
+          其他測試
+        </router-link>
+    </el-menu-item>
+    <el-menu-item index="3">
+        <router-link to='/login' class="nav-link link" >
+          登入頁面TEST
+        </router-link>
+    </el-menu-item>
+    <el-submenu index="2">
+      <template slot="title">我的工作台</template>
+      <el-menu-item index="2-1">选项1</el-menu-item>
+      <el-menu-item index="2-2">选项2</el-menu-item>
+      <el-menu-item index="2-3">选项3</el-menu-item>
+      <el-submenu index="2-4">
+        <template slot="title">选项4</template>
+        <el-menu-item index="2-4-1">选项1</el-menu-item>
+        <el-menu-item index="2-4-2">选项2</el-menu-item>
+        <el-menu-item index="2-4-3">选项3</el-menu-item>
+      </el-submenu>
+    </el-submenu>
+    <el-menu-item index="3" disabled>消息中心</el-menu-item>
+    <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+  </el-menu>
+  <!--<div class="line"></div>  底線畫面--> 
+<!--黑-->
+<!--  
+  <el-menu
+    :default-active="activeIndex2"
+    class="el-menu-demo"
+    mode="horizontal"
+    @select="handleSelect"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b">
+    <el-menu-item index="1">
+        <router-link to='/dynamicform' class="nav-link" >
+          動態表單
+        </router-link>
+    </el-menu-item>
+    <el-menu-item index="1">
+        <router-link to='/othertest' class="nav-link" >
+          其他測試
+        </router-link>
+    </el-menu-item>
+    <el-menu-item index="1">
+        <router-link to='/login' class="nav-link" >
+          登入頁面TEST
+        </router-link>
+    </el-menu-item>
+    <el-submenu index="2">
+      <template slot="title">我的工作台</template>
+      <el-menu-item index="2-1">选项1</el-menu-item>
+      <el-menu-item index="2-2">选项2</el-menu-item>
+      <el-menu-item index="2-3">选项3</el-menu-item>
+      <el-submenu index="2-4">
+        <template slot="title">选项4</template>
+        <el-menu-item index="2-4-1">选项1</el-menu-item>
+        <el-menu-item index="2-4-2">选项2</el-menu-item>
+        <el-menu-item index="2-4-3">选项3</el-menu-item>
+      </el-submenu>
+    </el-submenu>
+    <el-menu-item index="3" disabled>消息中心</el-menu-item>
+    <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理 ???</a></el-menu-item>
+  </el-menu>
+-->    
 </template>
 
 <script>
@@ -47,18 +93,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 a {
-  color: #42b983;
+  text-decoration : none ;
 }
 </style>

@@ -6,7 +6,7 @@
     <div class="red" :class="{ show: !oneData.isErr }">{{oneData.errMsg}}</div> -->
 
     <p>{{oneData.title}}</p>
-    <input type="text" v-model="oneData.val"  >
+    <input type="text" v-model="oneData.val" :disabled="!oneData.disable"  >
     <div class="red" :class="{ show: !oneData.isErr }">{{oneData.errMsg}}</div>
 
     

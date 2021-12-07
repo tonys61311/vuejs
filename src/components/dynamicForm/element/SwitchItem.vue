@@ -1,7 +1,7 @@
 <template>
   <div class="SwitchItem">
 
-  switch按鈕:
+  {{oneData.title}} : 
     
     <el-switch
     v-model="oneData.val"
