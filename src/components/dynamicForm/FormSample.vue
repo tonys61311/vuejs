@@ -7,9 +7,14 @@
     </div>
 
     <div class="red"> 加入登入控管 (參考main.js的 控管登入) </div>
-    <div v-for="(item,index) in myTest" :key="index" :class="{displaynone:showPage!=index}" >
+    <div v-for="(item,index) in myTest" :key="index" :class="{displaynone:allPage[showPage]!==index}" >
     分頁 :  {{index}}
       <FormMom :onepage="item" :key="item.id" :nowpage="index"> </FormMom>
+    </div>
+    <!-- 下一頁BTN -->
+    <div class="flex-center flex-row">
+      <button @click="switchPage(-1)" :class="{displaynone:showPage==0}">上一頁</button>
+      <button @click="switchPage(1)" :class="{displaynone:showPage>=(allPage.length-1)}"> 下一頁</button>
     </div>
   </div>
 </template>
@@ -32,11 +37,27 @@ export default {
     const showPage = computed(() => {
       return store.state.dynamicFormModule.nowShowPage
      });
+    
+    const allPage = computed(() => {
+      return store.state.dynamicFormModule.pageList
+     });
 
    // 切換頁面 
     const switchPage = (page)=>{
-        store.dispatch("dynamicFormModule/switchPage" ,  page  )
+      // 為上一頁或下一頁
+      if(page == 1 || page == -1){
+
+        var newPage = store.state.dynamicFormModule.nowShowPage + page
+        store.dispatch("dynamicFormModule/switchPage" ,  newPage  )
+        return ;
+      }
+      var allPageObj = store.state.dynamicFormModule.pageList ;
+      var nowPageNum = allPageObj.indexOf(page) ; // 現在頁數是在第幾個排序
+      
+      store.dispatch("dynamicFormModule/switchPage" ,  nowPageNum  )
     }
+
+
 
 
     // 一載入要做的事
@@ -44,7 +65,7 @@ export default {
       // loading遮罩 打開
       // store.dispatch("loading" ,  true  ) 
       const firstPage =Object.keys(myTest)[0] ; //  第一頁名稱
-      store.dispatch("dynamicFormModule/init" ,  firstPage )
+      store.dispatch("dynamicFormModule/init" ,  Object.keys(myTest) )
       // showPage = store.state.dynamicFormModule.nowShowPage ;
       // console.log(showPage)
         // setTimeout(() => {
@@ -60,6 +81,7 @@ export default {
       myTest ,
       switchPage,
       showPage,
+      allPage
 
     }
   },

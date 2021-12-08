@@ -3,13 +3,14 @@
 export default ({
     namespaced: true, // !!!!一定要加
     state: {
-        nowShowPage: "", // 現在顯示的頁面
+        nowShowPage: 0, // 現在顯示的頁面
+        pageList:[], // 所有頁面名稱
         insurePage:"", // 要保人所在頁面(被塞值)
         beinsurePage:"", // 被保人所在頁面(塞值)
         insureList:[], // 要保人所有欄位id(被塞值)
         beinsureList:[], // 被保人所有欄位id(塞值)
-        insureList_all:['petT1'], // 要保人所有欄位id(被塞值)...所有
-        beinsureList_all:['t1'], // 被保人所有欄位id(塞值)...所有
+        insureList_all:['petT1','petT2'], // 要保人所有欄位id(被塞值)...所有
+        beinsureList_all:['t1','t2'], // 被保人所有欄位id(塞值)...所有
         pageFieldState:{
             'pageA':{
               't1':{
@@ -47,6 +48,18 @@ export default ({
                     'display':true ,
                     'disable':true ,
                     'getData': 't1'  // 要塞入誰的值
+                },
+                'petT2': {
+                  'title': '寵物姓名EMAIL',
+                  'type':'textPart',
+                  'val': '',
+                  'id':'petT2',
+                  'isErr':false,
+                  'errMsg':'此欄位為必填',
+                  'rule':['A01'],
+                  'display':true ,
+                  'disable':true ,
+                  'getData': 't2'  // 要塞入誰的值
                 },
                 'sameTest':{
                   'title': '寵物姓名是否要跟姓名相同',
@@ -118,11 +131,11 @@ export default ({
     },
     mutations: {
         INIT(state , payload){ // 一開始塞值(塞入API值 + 塞入首頁值)
-          state.nowShowPage = payload[0] ;
-          state.insurePage = payload[1] ;
-          state.beinsurePage = payload[2] ;
-          state.insureList = payload[3] ;
-          state.beinsureList = payload[4] ;
+          state.pageList = payload['pageList'];
+          state.insurePage = payload['insurePage'] ;
+          state.beinsurePage = payload['beinsurePage'] ;
+          state.insureList = payload['insureList'] ;
+          state.beinsureList = payload['beinsureList'] ;
         },
         CHANGEVAL(state , payload){ // 檢核改狀態
             // console.log('檢核改狀態')
@@ -167,7 +180,18 @@ export default ({
             }
           }
 
-          context.commit('INIT',[payload,insurePage,beInsurePage,insure,beInsure])
+
+          var passData = {
+            'pageList':payload,
+            'insurePage':insurePage,
+            'beinsurePage':beInsurePage,
+            'insureList':insure,
+            'beinsureList':beInsure 
+          }
+
+          // context.commit('INIT',[payload,insurePage,beInsurePage,insure,beInsure])
+          context.commit('INIT',passData)
+
         },
         changeVal(context , payload) {
             var nowData = payload['data']
