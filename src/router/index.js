@@ -5,6 +5,7 @@ import FormSample from '@/components/dynamicForm/FormSample.vue'
 import DashBoard from '@/components/DashBoard.vue'
 import Login from '@/components/Login.vue'
 import OtherTest from '@/components/OtherTest.vue'
+import TableTest from '@/components/TableTest.vue'
 
 const routes = [
   // {
@@ -33,7 +34,11 @@ const routes = [
         name: '其他測試',
         component: OtherTest,
       },
-
+      {
+        path:'table',
+        name: 'table表單',
+        component: TableTest,
+      },
     ],
   },
   {

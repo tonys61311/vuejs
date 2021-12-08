@@ -13,6 +13,11 @@
         </router-link>
     </el-menu-item>
     <el-menu-item index="3">
+      <router-link to='/table' class="nav-link link" >
+        table表單
+      </router-link>
+    </el-menu-item>
+    <el-menu-item index="4">
         <router-link to='/login' class="nav-link link" >
           登入頁面TEST
         </router-link>
