@@ -189,7 +189,6 @@ export default ({
             'beinsureList':beInsure 
           }
 
-          // context.commit('INIT',[payload,insurePage,beInsurePage,insure,beInsure])
           context.commit('INIT',passData)
 
         },
@@ -219,11 +218,6 @@ export default ({
         checkRule(context ,{allData ,nowData ,nowPage } ){
             var fieldName = nowData.id;
             var pageFieldState = allData ;
-
-            // console.log(this.state.dynamicFormModule)
-            // console.log(this.state.dynamicFormModule.pageFieldState[nowPage])
-            // console.log(this.state.dynamicFormModule.pageFieldState[nowPage][fieldName])
-
             
             nowData.rule.forEach((element,index) => {
                 if(index == 0){
@@ -289,7 +283,7 @@ export default ({
           var checkPageData = this.state.dynamicFormModule.pageFieldState[checkPage]; // 要檢核的所有欄位
           var allData = this.state.dynamicFormModule.pageFieldState ; // 所有欄位值
 
-          // 切頁檢核
+          // 切頁檢核(切出檢核)
           for(var i in checkPageData){
             var nowData = checkPageData[i];
             var nowPage = checkPage ;
@@ -306,6 +300,8 @@ export default ({
               allData = res ;
             })
           }
+
+          // 切頁檢核(切入檢核)...不知道會不會用到??
 
           context.commit('CHANGEVAL',allData) //  檢核完的值
           context.commit('CHANGEPAGE',nextPage) // 更改頁數

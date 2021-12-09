@@ -4,13 +4,9 @@
   測試: 登入成功後跳轉功能<br>
   1. 登入成功後值是否寫入store(OK)<br>
   2. 成功後是否重新跳轉(OK)<br>
+  <div class="red">-要在store內跳轉, 需引入route EX: import router from "../router/index.js"</div>
   3. 於App.vue中 加入loading遮罩 於store的最父層加入 isLoading 統一管理(錯誤訊息彈窗應該也是一樣作法?)
 
-  <div class="red">
-  問題:<br>
-  router.push(頁面跳轉)只能用在 .vue檔 無法在store中的action使用<br>
-  -> 呼叫API可能全部需要在.vue中做??? 成功後同時存資料進store+直接跳轉頁面??<br>
-  </div>
 
   <button type="button" class="btn btn-success" @click="login(true)">按我登入成功(寫入資料看store)</button>
   <button type="button" class="btn btn-danger" @click="login(false)">按我登入失敗</button>
@@ -33,8 +29,8 @@ export default {
     const route = useRoute();
 
     const login = (isSuccess)=>{
-        // loading遮罩 打開
-        store.dispatch("loading" ,  true  ) 
+        
+        store.dispatch("loading" ,  true  ) // loading遮罩 打開
 
         setTimeout(() => {
             var userReq ;
@@ -47,14 +43,10 @@ export default {
             }else{
                 userReq = {}
             }
-
-            store.dispatch("userDataModules/login" ,  userReq  )
-            // loading遮罩 關閉
-            store.dispatch("loading" ,  false  )
-
-            if(isSuccess){
-                router.push('/dynamicform') // route的push只能在vuex運行
-            }
+            store.dispatch("userDataModules/login" ,  {userReq ,isSuccess}  )
+            // store.dispatch("userDataModules/login" ,  userReq  )
+            
+            store.dispatch("loading" ,  false  ) // loading遮罩 關閉
 
             
         }, 2000);
