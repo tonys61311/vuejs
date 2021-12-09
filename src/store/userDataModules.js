@@ -2,7 +2,7 @@
 import axois from 'axios'
 import router from "../router/index.js" // 要在vuex裡切換路由一定要加!!!!!
 import {initDB} from '../util/database.js'
-import idb from '@/api/idb';
+import { openDB, deleteDB, wrap, unwrap , idb } from 'idb';
 
 export default ({
     namespaced: true, // !!!!一定要加
@@ -73,8 +73,26 @@ export default ({
                 },
               });
 
+            var test = await idbGeo.keys();
+
+            const promiseDB = new Promise((resolve, reject) => {
+                var indexDb_data_all = [] ;
+                for(let i = 0 ; i<test.length ; i++){ //test.length
+                    idbGeo.get(test[i]).then((resolve, reject)=>{
+                        indexDb_data_all.push(resolve)
+                    })
+                }
+                resolve(indexDb_data_all)
+            });
+
+            promiseDB.then((res)=>{
+                console.log('在這裡取得所indexDB的值')
+                console.log(res)
+            })
+
             // indexDb存入 - 教學參考 https://www.yasssssblog.com/2020/08/19/web-indexeddb/
 
+            return ;
 
             // 登入狀態可能需要改存 cookie 或 localStorage ... 暫時註解
             if(isSuccess){ 
