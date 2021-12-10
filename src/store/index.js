@@ -6,6 +6,7 @@ export default createStore({
   state: {
     isLoading:false ,
     isLogin:false ,
+    dbdata:{},
   },
   mutations: {
     LOADSTATE(state , payload){
@@ -14,6 +15,9 @@ export default createStore({
     },
     LOGINSTATE(state , status){
       state.isLogin = status 
+    },
+    DBDATAGET(state , payload){
+      state.dbdata = payload 
     }
   },
   actions: {

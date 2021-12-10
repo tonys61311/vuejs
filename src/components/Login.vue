@@ -30,11 +30,10 @@ export default {
 
     const login = (isSuccess)=>{
         
-        store.dispatch("loading" ,  true  ) // loading遮罩 打開
+        // store.dispatch("loading" ,  true  ) // loading遮罩 打開
 
-        setTimeout(() => {
+
             var userReq ;
-
             if(isSuccess){
                 userReq = {
                     "userName" : "天兵",
@@ -44,12 +43,11 @@ export default {
                 userReq = {}
             }
             store.dispatch("userDataModules/login" ,  {userReq ,isSuccess}  )
-            // store.dispatch("userDataModules/login" ,  userReq  )
             
-            store.dispatch("loading" ,  false  ) // loading遮罩 關閉
+            // store.dispatch("loading" ,  false  ) // loading遮罩 關閉
 
             
-        }, 2000);
+
     }
 
     return {

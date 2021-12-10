@@ -17,6 +17,7 @@ export default ({
     },
     actions: {
         async login(context , {userReq ,isSuccess}){
+            context.commit('LOADSTATE',true, {root: true})
             context.commit('LOGIN',userReq)
 
             // 取得測試資料
@@ -58,49 +59,40 @@ export default ({
                 keys = await idbGeo.keys();
               }
 
-            const db = await openDB("GeoData", 1, {
-                upgrade(db, oldVersion, newVersion, transaction) {
-                  // …
-                },
-                blocked() {
-                  // …
-                },
-                blocking() {
-                  // …
-                },
-                terminated() {
-                  // …
-                },
-              });
 
             var test = await idbGeo.keys();
 
             const promiseDB = new Promise((resolve, reject) => {
-                var indexDb_data_all = [] ;
+                const indexDb_data_all = new Map();
                 for(let i = 0 ; i<test.length ; i++){ //test.length
                     idbGeo.get(test[i]).then((resolve, reject)=>{
-                        indexDb_data_all.push(resolve)
+                        indexDb_data_all.set(i,resolve)
                     })
                 }
                 resolve(indexDb_data_all)
             });
 
             promiseDB.then((res)=>{
-                console.log('在這裡取得所indexDB的值')
-                console.log(res)
+                console.log('在這裡取得所indexDB的值');
+                context.commit('DBDATAGET',res, {root: true})
+                context.commit('LOADSTATE',false, {root: true})
+                loginNextstep();
             })
 
             // indexDb存入 - 教學參考 https://www.yasssssblog.com/2020/08/19/web-indexeddb/
 
-            return ;
 
-            // 登入狀態可能需要改存 cookie 或 localStorage ... 暫時註解
-            if(isSuccess){ 
-                context.commit('LOGINSTATE',true, {root: true}) // 更新登入狀態 有登入
-                router.push('/dynamicform') // 成功後跳轉route
-            }else{ 
-                context.commit('LOGINSTATE',false, {root: true}) // 更新登入狀態 無登入
+            function loginNextstep(){
+                 // 登入狀態可能需要改存 cookie 或 localStorage ... 暫時註解
+                if(isSuccess){ 
+                    context.commit('LOGINSTATE',true, {root: true}) // 更新登入狀態 有登入
+                    router.push('/dynamicform') // 成功後跳轉route
+                }else{ 
+                    context.commit('LOGINSTATE',false, {root: true}) // 更新登入狀態 無登入
+                }
             }
+
+
             
 
 
